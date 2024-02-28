@@ -69,8 +69,7 @@ app.post('/login', (req, res) => {
   const sql = "SELET * FROM db_usermanagement_users WHERE email=?";
   conn.query(sql, [req.body.email], (err, data) => {
     if(err) console.log('Error executing the query');
-    let dataL = data.length;
-    if(dataL > 0){
+    if(data.length > 0){
       bcrypt.compare(req.body.password.toString(), data[0].password, (err, response) => {
         if(err) return res.json({Error:'ERROR in Passwrod'});
         if(response){

@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom"
 import axios from "axios"
 
 const SignIn = () => {
-    const [value, SetValue] = useState({
+    const [values, SetValue] = useState({
       email: '',
       password: ''
     })
@@ -14,7 +14,7 @@ const SignIn = () => {
     const headleLogin = (e) => {
       e.preventDefault();
       setCookie({ path: "/"})
-      axios.post('http://localhost:8081/login', value)
+      axios.post('http://localhost:8081/login', values)
       .then(res => {
         if(res.data.Status === "Success"){
           if(res.data.Result[0].role === 'admin'){
@@ -41,14 +41,14 @@ const SignIn = () => {
                             <div className="py-2">
                                 <span><IonIons name='at' size='large'></IonIons></span>
                                 <label htmlFor="" className="text-xl pl-4">Email: </label>
-                                <input type="email" className="w-full h-12 border my-2 pl-2 text-xl" required placeholder="First Name" 
-                                onChange={e => SetValue({...value, email:e.target.value})}/>
+                                <input type="email" className="w-full h-12 border my-2 pl-2 text-xl" required placeholder="Email" 
+                                onChange={e => SetValue({...values, email:e.target.value})}/>
                             </div>
                             <div className="py-2">
                                 <span><IonIons name='key' size='large'></IonIons></span>
                                 <label htmlFor="" className="text-xl pl-4">Password: </label>
                                 <input type="password" className="w-full h-12 border my-2 pl-2 text-xl" required placeholder="Password" 
-                                onChange={e => SetValue({...value, password:e.target.value})}/>
+                                onChange={e => SetValue({...values, password:e.target.value})}/>
                             </div>
                             <div className="py-2">
                                 <button type="submit" className="border border-cyan-600 w-1/2 text-cyan-600 rounded-lg h-12 duration-500 hover:bg-cyan-600 hover:text-white">Login</button>    
