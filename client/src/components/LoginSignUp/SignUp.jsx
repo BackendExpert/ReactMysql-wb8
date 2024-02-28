@@ -41,12 +41,14 @@ const SignUp = () => {
                             <div className="py-2">
                                 <span><IonIons name='at' size='large'></IonIons></span>
                                 <label htmlFor="" className="text-xl pl-4">Email: </label>
-                                <input type="email" className="w-full h-12 border my-2 pl-2 text-xl" required placeholder="First Name" />
+                                <input type="email" className="w-full h-12 border my-2 pl-2 text-xl" required placeholder="First Name" 
+                                onChange={e => SetData({...data, email:e.target.value})}/>
                             </div>
                             <div className="py-2">
                                 <span><IonIons name='key' size='large'></IonIons></span>
                                 <label htmlFor="" className="text-xl pl-4">Password: </label>
-                                <input type="password" className="w-full h-12 border my-2 pl-2 text-xl" required placeholder="Password" />
+                                <input type="password" className="w-full h-12 border my-2 pl-2 text-xl" required placeholder="Password" 
+                                onChange={e => SetData({...data, password:e.target.value})}/>
                             </div>
                             <div className="py-2">
                                 <button type="submit" className="border border-cyan-600 w-1/2 text-cyan-600 rounded-lg h-12 duration-500 hover:bg-cyan-600 hover:text-white">SignUp</button>    
