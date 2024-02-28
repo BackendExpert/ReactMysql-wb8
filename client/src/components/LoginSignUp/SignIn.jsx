@@ -41,7 +41,7 @@ const SignIn = () => {
                                 onChange={e => SetData({...data, password:e.target.value})}/>
                             </div>
                             <div className="py-2">
-                                <button type="submit" className="border border-cyan-600 w-1/2 text-cyan-600 rounded-lg h-12 duration-500 hover:bg-cyan-600 hover:text-white">SignUp</button>    
+                                <button type="submit" className="border border-cyan-600 w-1/2 text-cyan-600 rounded-lg h-12 duration-500 hover:bg-cyan-600 hover:text-white">Login</button>    
                             </div>                          
                         </form>
 
