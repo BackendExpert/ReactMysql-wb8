@@ -1,7 +1,7 @@
 const SignUp = () => {
   return (
-    <div>
-                
+    <div className="bg-[url()]">
+        klkajsdlkj
     </div>
   )
 }
