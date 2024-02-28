@@ -35,7 +35,7 @@ conn.connect((error) =>
 app.post('/register', async (req, res) => {
   console.log(req.body)
   const passHash = await bcrypt.hash(req.body.password.toString(), 10);
-  const query = "INSERT TO "
+  const query = "INSERT TO db_usermanagement_users (firstName, email, password, role, created_at, update_at)"
 })
 
 app.listen(8081, () => {
