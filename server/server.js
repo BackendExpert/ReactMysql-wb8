@@ -35,7 +35,24 @@ conn.connect((error) =>
 app.post('/register', async (req, res) => {
   console.log(req.body)
   const passHash = await bcrypt.hash(req.body.password.toString(), 10);
-  const query = "INSERT TO db_usermanagement_users (firstName, email, password, role, created_at, update_at)"
+  const sql = "INSERT TO db_usermanagement_users (firstName, email, password, role, created_at, update_at) VALUES (?)";
+
+  const vlaues = [
+    req.body.fname,
+    req.body.email,
+    passHash,
+    NOW(),
+    NOW()
+  ]
+
+  conn.query(sql, [vlaues], (err, result) => {
+    if(err){
+      console.log(err)
+    }
+    else{
+      return res.json({Status: "Success"})
+    }
+  });
 })
 
 app.listen(8081, () => {
