@@ -21,3 +21,5 @@
 or
 
 - - import self-contained file
+
+select on of above and Start Import
