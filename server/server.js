@@ -12,22 +12,22 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-//create database connection
-const conn = mysql.createConnection
-({
-  host: 'localhost',
-  user: 'root',
-  password: '',
-  database: ''
-});
+// //create database connection
+// const conn = mysql.createConnection
+// ({
+//   host: '',
+//   user: '',
+//   password: '',
+//   database: ''
+// });
 
-//connect to database
-conn.connect((error) =>
-{
-  if(error) throw error
-  else 
-  console.log('Mysql Connected...');
-});
+// //connect to database
+// conn.connect((error) =>
+// {
+//   if(error) throw error
+//   else 
+//   console.log('Mysql Connected...');
+// });
 
 
 app.listen(8081, () => {
