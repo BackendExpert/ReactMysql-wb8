@@ -30,6 +30,14 @@ conn.connect((error) =>
 });
 
 
+//user register
+
+app.post('/register', async (req, res) => {
+  console.log(req.body)
+  const passHash = await bcrypt.hash(req.body.password.toString(), 10);
+  const query = "INSERT TO "
+})
+
 app.listen(8081, () => {
     console.log("Server running successfully on 8081");
 });
