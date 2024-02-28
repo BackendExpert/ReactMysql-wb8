@@ -66,9 +66,12 @@ app.post('/register', async (req, res) => {
 
 // User Login
 app.post('/login', (req, res) => {
-  const sql = "SELET * FROM db_usermanagement_users WHERE email=?";
+  const sql = "SELECT * FROM db_usermanagement_users WHERE email=?";
+
   conn.query(sql, [req.body.email], (err, data) => {
+
     if(err) console.log('Error executing the query');
+    
     if(data.length > 0){
       bcrypt.compare(req.body.password.toString(), data[0].password, (err, response) => {
         if(err) return res.json({Error:'ERROR in Passwrod'});
@@ -82,7 +85,7 @@ app.post('/login', (req, res) => {
     }else{
         return res.json({Error: "Email does Not Exist"})
     }    
-  });
+  })
 })
 
 app.listen(8081, () => {
