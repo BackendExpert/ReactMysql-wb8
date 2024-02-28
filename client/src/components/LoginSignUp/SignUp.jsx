@@ -36,7 +36,7 @@ const SignUp = () => {
                             <span><IonIons name='person' size='large'></IonIons></span>
                                 <label htmlFor="" className="text-xl pl-4">First Name: </label>
                                 <input type="text" className="w-full h-12 border my-2 pl-2 text-xl" required placeholder="First Name" 
-                                onChange={e => SetData({...data, })}/>
+                                onChange={e => SetData({...data, fname:e.target.value })}/>
                             </div>
                             <div className="py-2">
                                 <span><IonIons name='at' size='large'></IonIons></span>
