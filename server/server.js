@@ -36,12 +36,8 @@ app.post('/register', async (req, res) => {
   console.log(req.body)
   const passHash = await bcrypt.hash(req.body.password.toString(), 10);
 
-  const createTime = new Date().toLocaleString('en-US', {
-    timeZone: 'Asia/Calcutta'
-  });
-  const updateTime = new Date().toLocaleString('en-US', {
-    timeZone: 'Asia/Calcutta'
-  });
+  const createTime = new Date();
+  const updateTime = new Date();
   
   const default_user = 'user';
 
