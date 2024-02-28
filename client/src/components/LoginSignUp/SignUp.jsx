@@ -1,7 +1,26 @@
 import IonIons from '@reacticons/ionicons';
-import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import axios from "axios";
 
 const SignUp = () => {
+    const [data, SetData] = useState({
+        fname: '',
+        email: '',
+        password: ''
+    })
+    const navigate = useNavigate()
+
+    const headleSubmit = (e) =>{
+        e.preventDefault();
+
+        axios.post('http://localhost:8081/register', data)
+        .then(res => {
+            if(res.data.Status === "Success"){
+                navigate('/');
+            }
+        }).catch(err => console.log(err))
+    }
   return (
     <div className="bg-[url(https://wallpapercave.com/wp/wp2707504.jpg)] bg-cover bg-center h-screen w-full lg:pt-40 pt-28">
         <div className="mx-12 lg:mx-32 rounded-xl">
@@ -12,11 +31,12 @@ const SignUp = () => {
                 </div>
                 <div className="bg-white w-1/2">
                     <div className="py-20 px-16">
-                        <form>
+                        <form onSubmit={headleSubmit}>
                             <div className="py-2">
                             <span><IonIons name='person' size='large'></IonIons></span>
                                 <label htmlFor="" className="text-xl pl-4">First Name: </label>
-                                <input type="text" className="w-full h-12 border my-2 pl-2 text-xl" required placeholder="First Name" />
+                                <input type="text" className="w-full h-12 border my-2 pl-2 text-xl" required placeholder="First Name" 
+                                onChange={e => SetData({...data, })}/>
                             </div>
                             <div className="py-2">
                                 <span><IonIons name='at' size='large'></IonIons></span>
