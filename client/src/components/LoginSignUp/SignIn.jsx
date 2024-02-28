@@ -30,7 +30,7 @@ const SignIn = () => {
       })
       .catch(err => console.log(err))
     }
-    
+
   return (
     <div className="bg-[url(https://wallpapercave.com/wp/wp2707507.jpg)] bg-cover bg-center h-screen w-full lg:pt-40 pt-28">
         <div className="mx-12 lg:mx-32 rounded-xl">
@@ -42,13 +42,13 @@ const SignIn = () => {
                                 <span><IonIons name='at' size='large'></IonIons></span>
                                 <label htmlFor="" className="text-xl pl-4">Email: </label>
                                 <input type="email" className="w-full h-12 border my-2 pl-2 text-xl" required placeholder="First Name" 
-                                onChange={e => SetData({...data, email:e.target.value})}/>
+                                onChange={e => SetValue({...value, email:e.target.value})}/>
                             </div>
                             <div className="py-2">
                                 <span><IonIons name='key' size='large'></IonIons></span>
                                 <label htmlFor="" className="text-xl pl-4">Password: </label>
                                 <input type="password" className="w-full h-12 border my-2 pl-2 text-xl" required placeholder="Password" 
-                                onChange={e => SetData({...data, password:e.target.value})}/>
+                                onChange={e => SetValue({...value, password:e.target.value})}/>
                             </div>
                             <div className="py-2">
                                 <button type="submit" className="border border-cyan-600 w-1/2 text-cyan-600 rounded-lg h-12 duration-500 hover:bg-cyan-600 hover:text-white">Login</button>    
