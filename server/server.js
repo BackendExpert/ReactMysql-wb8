@@ -1,4 +1,4 @@
-import express from "express";
+import express, { response } from "express";
 import cors from 'cors';
 import mysql from "mysql2";
 import bcrypt from "bcrypt";
@@ -60,6 +60,28 @@ app.post('/register', async (req, res) => {
     else{
       return res.json({Status: "Success"})
     }
+  });
+})
+
+
+// User Login
+app.post('/login', (req, res) => {
+  const sql = "SELET * FROM db_usermanagement_users WHERE email=?";
+  conn.query(sql, [req.body,email], (err, data) => {
+    if(err)
+    if(data.length > 0){
+      bcrypt.compare(req.body.password.toString(), data[0].password, (err, response) => {
+        if(err) return res.json({Error:'ERROR in Passwrod'});
+        if(response){
+          return res.json({Status: "Success", Result: data});
+        }
+        else{
+          return res.json({Error: 'Password dose not Match'});
+        }
+      })
+    }else{
+        return res.json({Error: "Email does Not Ex"})
+    }    
   });
 })
 
