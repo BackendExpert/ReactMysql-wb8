@@ -18,7 +18,7 @@ const SignIn = () => {
       .then(res => {
         if(res.data.Status === "Success"){
           if(res.data.Result[0].role === 'admin'){
-            navigate();
+            navigate('/admin');
           }
           else if(res.data.Result[0] === 'user'){
             navigate();
