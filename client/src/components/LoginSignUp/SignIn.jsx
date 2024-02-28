@@ -15,12 +15,22 @@ const SignIn = () => {
       e.preventDefault();
       setCookie({ path: "/"})
       axios.post('http://localhost:8081/login', value)
-      // .then(res => {
-      //   if(res.data.Status === "Success"{
-
-      //   })
-      // })
+      .then(res => {
+        if(res.data.Status === "Success"){
+          if(res.data.Result[0].role === 'admin'){
+            navigate();
+          }
+          else if(res.data.Result[0] === 'user'){
+            navigate();
+          }
+        }
+        else{
+          alert("Invalid Password and Email")
+        }
+      })
+      .catch(err => console.log(err))
     }
+    
   return (
     <div className="bg-[url(https://wallpapercave.com/wp/wp2707507.jpg)] bg-cover bg-center h-screen w-full lg:pt-40 pt-28">
         <div className="mx-12 lg:mx-32 rounded-xl">
